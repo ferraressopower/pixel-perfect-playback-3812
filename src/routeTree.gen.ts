@@ -10,33 +10,241 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AppRouteRouteImport } from './routes/_app/route'
+import { Route as CadastroRouteImport } from './routes/cadastro'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as RecuperarSenhaRouteImport } from './routes/recuperar-senha'
+import { Route as RedefinirSenhaRouteImport } from './routes/redefinir-senha'
+import { Route as AppAgentesIaRouteImport } from './routes/_app/agentes-ia'
+import { Route as AppBuscarEmpresasRouteImport } from './routes/_app/buscar-empresas'
+import { Route as AppCampanhasRouteImport } from './routes/_app/campanhas'
+import { Route as AppClientesRouteImport } from './routes/_app/clientes'
+import { Route as AppConfiguracoesRouteImport } from './routes/_app/configuracoes'
+import { Route as AppCriadorDeSitesRouteImport } from './routes/_app/criador-de-sites'
+import { Route as AppCrmRouteImport } from './routes/_app/crm'
+import { Route as AppDashboardRouteImport } from './routes/_app/dashboard'
+import { Route as AppFinanceiroRouteImport } from './routes/_app/financeiro'
+import { Route as AppLeadsRouteImport } from './routes/_app/leads'
+import { Route as AppModelosRouteImport } from './routes/_app/modelos'
+import { Route as AppProjetosRouteImport } from './routes/_app/projetos'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AppRouteRoute = AppRouteRouteImport.update({
+  id: '/_app',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CadastroRoute = CadastroRouteImport.update({
+  id: '/cadastro',
+  path: '/cadastro',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RecuperarSenhaRoute = RecuperarSenhaRouteImport.update({
+  id: '/recuperar-senha',
+  path: '/recuperar-senha',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RedefinirSenhaRoute = RedefinirSenhaRouteImport.update({
+  id: '/redefinir-senha',
+  path: '/redefinir-senha',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppAgentesIaRoute = AppAgentesIaRouteImport.update({
+  id: '/agentes-ia',
+  path: '/agentes-ia',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppBuscarEmpresasRoute = AppBuscarEmpresasRouteImport.update({
+  id: '/buscar-empresas',
+  path: '/buscar-empresas',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppCampanhasRoute = AppCampanhasRouteImport.update({
+  id: '/campanhas',
+  path: '/campanhas',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppClientesRoute = AppClientesRouteImport.update({
+  id: '/clientes',
+  path: '/clientes',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppConfiguracoesRoute = AppConfiguracoesRouteImport.update({
+  id: '/configuracoes',
+  path: '/configuracoes',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppCriadorDeSitesRoute = AppCriadorDeSitesRouteImport.update({
+  id: '/criador-de-sites',
+  path: '/criador-de-sites',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppCrmRoute = AppCrmRouteImport.update({
+  id: '/crm',
+  path: '/crm',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppDashboardRoute = AppDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppFinanceiroRoute = AppFinanceiroRouteImport.update({
+  id: '/financeiro',
+  path: '/financeiro',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppLeadsRoute = AppLeadsRouteImport.update({
+  id: '/leads',
+  path: '/leads',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppModelosRoute = AppModelosRouteImport.update({
+  id: '/modelos',
+  path: '/modelos',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppProjetosRoute = AppProjetosRouteImport.update({
+  id: '/projetos',
+  path: '/projetos',
+  getParentRoute: () => AppRouteRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/cadastro': typeof CadastroRoute
+  '/login': typeof LoginRoute
+  '/recuperar-senha': typeof RecuperarSenhaRoute
+  '/redefinir-senha': typeof RedefinirSenhaRoute
+  '/agentes-ia': typeof AppAgentesIaRoute
+  '/buscar-empresas': typeof AppBuscarEmpresasRoute
+  '/campanhas': typeof AppCampanhasRoute
+  '/clientes': typeof AppClientesRoute
+  '/configuracoes': typeof AppConfiguracoesRoute
+  '/criador-de-sites': typeof AppCriadorDeSitesRoute
+  '/crm': typeof AppCrmRoute
+  '/dashboard': typeof AppDashboardRoute
+  '/financeiro': typeof AppFinanceiroRoute
+  '/leads': typeof AppLeadsRoute
+  '/modelos': typeof AppModelosRoute
+  '/projetos': typeof AppProjetosRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/cadastro': typeof CadastroRoute
+  '/login': typeof LoginRoute
+  '/recuperar-senha': typeof RecuperarSenhaRoute
+  '/redefinir-senha': typeof RedefinirSenhaRoute
+  '/agentes-ia': typeof AppAgentesIaRoute
+  '/buscar-empresas': typeof AppBuscarEmpresasRoute
+  '/campanhas': typeof AppCampanhasRoute
+  '/clientes': typeof AppClientesRoute
+  '/configuracoes': typeof AppConfiguracoesRoute
+  '/criador-de-sites': typeof AppCriadorDeSitesRoute
+  '/crm': typeof AppCrmRoute
+  '/dashboard': typeof AppDashboardRoute
+  '/financeiro': typeof AppFinanceiroRoute
+  '/leads': typeof AppLeadsRoute
+  '/modelos': typeof AppModelosRoute
+  '/projetos': typeof AppProjetosRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_app': typeof AppRouteRouteWithChildren
+  '/cadastro': typeof CadastroRoute
+  '/login': typeof LoginRoute
+  '/recuperar-senha': typeof RecuperarSenhaRoute
+  '/redefinir-senha': typeof RedefinirSenhaRoute
+  '/_app/agentes-ia': typeof AppAgentesIaRoute
+  '/_app/buscar-empresas': typeof AppBuscarEmpresasRoute
+  '/_app/campanhas': typeof AppCampanhasRoute
+  '/_app/clientes': typeof AppClientesRoute
+  '/_app/configuracoes': typeof AppConfiguracoesRoute
+  '/_app/criador-de-sites': typeof AppCriadorDeSitesRoute
+  '/_app/crm': typeof AppCrmRoute
+  '/_app/dashboard': typeof AppDashboardRoute
+  '/_app/financeiro': typeof AppFinanceiroRoute
+  '/_app/leads': typeof AppLeadsRoute
+  '/_app/modelos': typeof AppModelosRoute
+  '/_app/projetos': typeof AppProjetosRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/cadastro'
+    | '/login'
+    | '/recuperar-senha'
+    | '/redefinir-senha'
+    | '/agentes-ia'
+    | '/buscar-empresas'
+    | '/campanhas'
+    | '/clientes'
+    | '/configuracoes'
+    | '/criador-de-sites'
+    | '/crm'
+    | '/dashboard'
+    | '/financeiro'
+    | '/leads'
+    | '/modelos'
+    | '/projetos'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/cadastro'
+    | '/login'
+    | '/recuperar-senha'
+    | '/redefinir-senha'
+    | '/agentes-ia'
+    | '/buscar-empresas'
+    | '/campanhas'
+    | '/clientes'
+    | '/configuracoes'
+    | '/criador-de-sites'
+    | '/crm'
+    | '/dashboard'
+    | '/financeiro'
+    | '/leads'
+    | '/modelos'
+    | '/projetos'
+  id:
+    | '__root__'
+    | '/'
+    | '/_app'
+    | '/cadastro'
+    | '/login'
+    | '/recuperar-senha'
+    | '/redefinir-senha'
+    | '/_app/agentes-ia'
+    | '/_app/buscar-empresas'
+    | '/_app/campanhas'
+    | '/_app/clientes'
+    | '/_app/configuracoes'
+    | '/_app/criador-de-sites'
+    | '/_app/crm'
+    | '/_app/dashboard'
+    | '/_app/financeiro'
+    | '/_app/leads'
+    | '/_app/modelos'
+    | '/_app/projetos'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AppRouteRoute: typeof AppRouteRouteWithChildren
+  CadastroRoute: typeof CadastroRoute
+  LoginRoute: typeof LoginRoute
+  RecuperarSenhaRoute: typeof RecuperarSenhaRoute
+  RedefinirSenhaRoute: typeof RedefinirSenhaRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +256,169 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_app': {
+      id: '/_app'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AppRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cadastro': {
+      id: '/cadastro'
+      path: '/cadastro'
+      fullPath: '/cadastro'
+      preLoaderRoute: typeof CadastroRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/recuperar-senha': {
+      id: '/recuperar-senha'
+      path: '/recuperar-senha'
+      fullPath: '/recuperar-senha'
+      preLoaderRoute: typeof RecuperarSenhaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/redefinir-senha': {
+      id: '/redefinir-senha'
+      path: '/redefinir-senha'
+      fullPath: '/redefinir-senha'
+      preLoaderRoute: typeof RedefinirSenhaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_app/agentes-ia': {
+      id: '/_app/agentes-ia'
+      path: '/agentes-ia'
+      fullPath: '/agentes-ia'
+      preLoaderRoute: typeof AppAgentesIaRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/buscar-empresas': {
+      id: '/_app/buscar-empresas'
+      path: '/buscar-empresas'
+      fullPath: '/buscar-empresas'
+      preLoaderRoute: typeof AppBuscarEmpresasRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/campanhas': {
+      id: '/_app/campanhas'
+      path: '/campanhas'
+      fullPath: '/campanhas'
+      preLoaderRoute: typeof AppCampanhasRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/clientes': {
+      id: '/_app/clientes'
+      path: '/clientes'
+      fullPath: '/clientes'
+      preLoaderRoute: typeof AppClientesRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/configuracoes': {
+      id: '/_app/configuracoes'
+      path: '/configuracoes'
+      fullPath: '/configuracoes'
+      preLoaderRoute: typeof AppConfiguracoesRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/criador-de-sites': {
+      id: '/_app/criador-de-sites'
+      path: '/criador-de-sites'
+      fullPath: '/criador-de-sites'
+      preLoaderRoute: typeof AppCriadorDeSitesRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/crm': {
+      id: '/_app/crm'
+      path: '/crm'
+      fullPath: '/crm'
+      preLoaderRoute: typeof AppCrmRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/dashboard': {
+      id: '/_app/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof AppDashboardRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/financeiro': {
+      id: '/_app/financeiro'
+      path: '/financeiro'
+      fullPath: '/financeiro'
+      preLoaderRoute: typeof AppFinanceiroRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/leads': {
+      id: '/_app/leads'
+      path: '/leads'
+      fullPath: '/leads'
+      preLoaderRoute: typeof AppLeadsRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/modelos': {
+      id: '/_app/modelos'
+      path: '/modelos'
+      fullPath: '/modelos'
+      preLoaderRoute: typeof AppModelosRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/projetos': {
+      id: '/_app/projetos'
+      path: '/projetos'
+      fullPath: '/projetos'
+      preLoaderRoute: typeof AppProjetosRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
   }
 }
 
+interface AppRouteRouteChildren {
+  AppAgentesIaRoute: typeof AppAgentesIaRoute
+  AppBuscarEmpresasRoute: typeof AppBuscarEmpresasRoute
+  AppCampanhasRoute: typeof AppCampanhasRoute
+  AppClientesRoute: typeof AppClientesRoute
+  AppConfiguracoesRoute: typeof AppConfiguracoesRoute
+  AppCriadorDeSitesRoute: typeof AppCriadorDeSitesRoute
+  AppCrmRoute: typeof AppCrmRoute
+  AppDashboardRoute: typeof AppDashboardRoute
+  AppFinanceiroRoute: typeof AppFinanceiroRoute
+  AppLeadsRoute: typeof AppLeadsRoute
+  AppModelosRoute: typeof AppModelosRoute
+  AppProjetosRoute: typeof AppProjetosRoute
+}
+
+const AppRouteRouteChildren: AppRouteRouteChildren = {
+  AppAgentesIaRoute: AppAgentesIaRoute,
+  AppBuscarEmpresasRoute: AppBuscarEmpresasRoute,
+  AppCampanhasRoute: AppCampanhasRoute,
+  AppClientesRoute: AppClientesRoute,
+  AppConfiguracoesRoute: AppConfiguracoesRoute,
+  AppCriadorDeSitesRoute: AppCriadorDeSitesRoute,
+  AppCrmRoute: AppCrmRoute,
+  AppDashboardRoute: AppDashboardRoute,
+  AppFinanceiroRoute: AppFinanceiroRoute,
+  AppLeadsRoute: AppLeadsRoute,
+  AppModelosRoute: AppModelosRoute,
+  AppProjetosRoute: AppProjetosRoute,
+}
+
+const AppRouteRouteWithChildren = AppRouteRoute._addFileChildren(
+  AppRouteRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AppRouteRoute: AppRouteRouteWithChildren,
+  CadastroRoute: CadastroRoute,
+  LoginRoute: LoginRoute,
+  RecuperarSenhaRoute: RecuperarSenhaRoute,
+  RedefinirSenhaRoute: RedefinirSenhaRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
