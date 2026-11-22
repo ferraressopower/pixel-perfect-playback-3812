@@ -28,3 +28,9 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project rules
+- Backend is an external, user-owned Supabase project — never Lovable Cloud. Client lives in `src/lib/supabase.ts` using `VITE_SUPABASE_URL`/`VITE_SUPABASE_ANON_KEY`; schema SQL lives in `docs/sql/` for the user to run. Why: user explicitly forbids Lovable-managed infra.
+- Multi-tenant: every private table carries `workspace_id` and RLS via `is_workspace_member()`. Why: tenant isolation must be enforced in the database, not the UI.
+- Signed-in areas live under the pathless `src/routes/_app/` layout (`ssr: false`, client session gate). Why: session is in localStorage.
+- Unbuilt modules render honest empty states, never fake data. Why: user requirement.
