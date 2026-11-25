@@ -17,16 +17,18 @@ const statsQuery = (workspaceId: string) => queryOptions({
       if (error) throw error;
       return c ?? 0;
     };
-    const [found, leads, noSite, sites, clients, mrr] = await Promise.all([
+    const [found, leads, noSite, withSite, searches, sites, clients, mrr] = await Promise.all([
       count("leads"),
-      count("leads", (q) => q.in("status", ["lead", "client"])),
-      count("leads", (q) => q.eq("has_website", false)),
+      count("leads", (q) => q.eq("saved_to_crm", true)),
+      count("leads", (q) => q.eq("website_status", "confirmed_none")),
+      count("leads", (q) => q.eq("website_status", "has_site")),
+      count("searches"),
       count("websites"),
-      count("leads", (q) => q.eq("status", "client")),
-      sb.from("leads").select("monthly_value_cents").eq("workspace_id", workspaceId).eq("status", "client")
+      count("leads", (q) => q.eq("status", "cliente")),
+      sb.from("leads").select("monthly_value_cents").eq("workspace_id", workspaceId).eq("status", "cliente")
         .then(({ data, error }) => { if (error) throw error; return (data ?? []).reduce((s, r: any) => s + (r.monthly_value_cents ?? 0), 0); }),
     ]);
-    return { found, leads, noSite, sites, clients, mrr };
+    return { found, leads, noSite, withSite, searches, sites, clients, mrr };
   },
 });
 
@@ -74,8 +76,10 @@ function Stats({ workspaceId, name }: { workspaceId: string; name: string }) {
       <PageHeader title="Dashboard" description={`Território: ${name}`} />
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
         <Stat label="Empresas encontradas" value={n(s.found)} icon={Building2} hint="Total rastreado nas buscas" />
-        <Stat label="Leads cadastrados" value={n(s.leads)} icon={Users} hint="Qualificados para abordagem" />
-        <Stat label="Empresas sem site" value={n(s.noSite)} icon={Globe2} hint="Oportunidades diretas" />
+        <Stat label="Leads salvos" value={n(s.leads)} icon={Users} hint="Salvos no CRM" />
+        <Stat label="Sem site confirmado" value={n(s.noSite)} icon={Globe2} hint="Oportunidades diretas" />
+        <Stat label="Empresas com site" value={n(s.withSite)} icon={Globe2} hint="Site identificado" />
+        <Stat label="Pesquisas realizadas" value={n(s.searches)} icon={Radar} hint="No buscador" />
         <Stat label="Sites criados" value={n(s.sites)} icon={Wand2} hint="No criador de sites" />
         <Stat label="Clientes conquistados" value={n(s.clients)} icon={Handshake} hint="Negócios fechados" />
         <Stat label="Receita recorrente" value={formatBRL(s.mrr)} icon={TrendingUp} hint="Mensal, dos clientes ativos" />

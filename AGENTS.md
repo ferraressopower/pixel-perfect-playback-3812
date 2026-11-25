@@ -34,3 +34,5 @@ use the editor.
 - Multi-tenant: every private table carries `workspace_id` and RLS via `is_workspace_member()`. Why: tenant isolation must be enforced in the database, not the UI.
 - Signed-in areas live under the pathless `src/routes/_app/` layout (`ssr: false`, client session gate). Why: session is in localStorage.
 - Unbuilt modules render honest empty states, never fake data. Why: user requirement.
+- Company finder logic lives in `src/lib/leads/` (pure rules in `normalize.ts`/`csv.ts`, Supabase calls in `queries.ts`, sources in `providers.ts`); UI in `src/components/leads/`. Why: external data sources plug into the provider layer without touching UI.
+- An empty website never means "no site": `website_status` distinguishes has_site / confirmed_none / not_informed / unverified. Why: user requirement for honest prospect data.
